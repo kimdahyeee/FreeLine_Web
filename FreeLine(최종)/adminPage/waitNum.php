@@ -2,7 +2,7 @@
 
 <?php
 	
-	define("GOOGLE_API_KEY", "AIzaSyBUOurWxGDkgqHSQ5aGlZ3lW___dYp7uO4");
+	define("GOOGLE_API_KEY", "/* google api key*/");
 
 	function send_notification ($tokens, $message)
     {
