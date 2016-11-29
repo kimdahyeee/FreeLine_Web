@@ -1,0 +1,219 @@
+<!doctype html>
+<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>FreeLine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="favicon.png">
+    
+    <!-- Bootstrap 3.3.2 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/js/rs-plugin/css/settings.css">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+
+    <script type="text/javascript" src="assets/js/modernizr.custom.32033.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<section id="join" class="doublediagonal">
+    <div class="container">
+        <div class="section-heading scrollpoint sp-effect3">
+            <a href="main.html">
+                <img src="assets/img/logo.png" class="logo" width="200px" height="auto">
+            </a>
+            <div class="divider"></div>
+            <p>회원가입</p>
+        </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 scrollpoint sp-effect1">
+                        <form role="form" action="./join_ok.php" method="post" onsubmit="return check(this)" enctype="multipart/form-data">
+                            <input type = "hidden" id = "id_id" value = "0">
+                            <input type = "hidden" id = "beacon_id" value = "0">
+                            <p> 기본 정보 </p>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="이름" required />
+                                <div id="idMsg" style="color:red;"></div>
+                                <input type="text" class="form-control" name="id" id="id" placeholder="아이디" required/>
+                                <input type="button" class="btn btn-primary" id="check_id" value="중복확인" />
+                                <input type="password" class="form-control" name="pwd" id="pwd" placeholder="비밀번호" required/>
+                                <input type="Password" class="form-control" name="rePwd" id="rePwd" placeholder="비밀번호 확인" required/>
+                            </div>
+                            <p>매장 정보</p>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="storeName" placeholder="매장이름">
+                                <input type="text" class="form-control" name="storeTel" placeholder="매장 전화번호">
+                                <input type="text" class="form-control" name="storeCategory" placeholder="매장 카테고리(콤마(,)로 구분해서 입력해주세요)" />
+                                <textarea cols="30" rows="10" class="form-control" name="storeIntro" placeholder="매장 소개글"></textarea>
+                            </div>
+                            <p>위치정보</p>
+                            <div class="form-group">
+                                <input type="text" class="form-control postcodify_postcode5" name="storePostCode" placeholder="우편번호">
+                                <input type="button" id="postcodify_search_button" class="btn btn-primary" value="검색"/>
+                                <input type="text" name="storeAddr" class="form-control postcodify_address" placeholder="도로명주소"/>
+                                
+                                <input type="text" name="storeAddrDetail" class="form-control postcodify_details" placeholder="상세주소"/>
+                                
+                            </div>
+                            <p>비콘 정보</p>
+                            <div class="form-group">
+                                <div id="beaconMsg" style="color:red;"></div>
+                                <input type="text" class="form-control" name="beaconID" id="beaconID" placeholder="비콘ID"/>
+                                <input type="button" value="인증하기" class="btn btn-primary" id="check_beacon"/>
+                            </div>
+                            <p>이미지 등록</p>
+                            <div class="form-group">
+                                <input type='file' name='file01'>
+                                <div id="holder"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">가입하기</button>
+                            
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</section>
+    <!-- jQuery와 Postcodify를 로딩한다 -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
+    <!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+    <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+    <script>
+        //이미지 미리보기 ~
+        var upload = document.getElementsByTagName('input')[14],
+            holder = document.getElementById('holder');
+
+        upload.onchange = function (e) {
+          e.preventDefault();
+
+          var file = upload.files[0],
+              reader = new FileReader();
+          reader.onload = function (event) {
+            var img = new Image();
+            img.src = event.target.result;
+
+            /*if (img.width > 560) { // holder width
+              img.width = 560;
+            }*/
+            img.width =200;
+            img.height = 200;
+            holder.innerHTML = '';
+            holder.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+          return false;
+        };
+    </script>
+    <script>
+        function check(obj){
+            if(document.getElementById('id_id').value=="0"){
+                        alert("아이디 확인을 해주세요.");
+                        return false;
+                }
+          else if(document.getElementById('beacon_id').value=="0"){
+                        alert("비콘 인증 해주세요.");
+                        return false;
+                }
+          else if(document.getElementById('pwd').value != document.getElementById('rePwd').value){
+                        alert("비밀번호를 다시 확인해주세요");
+                        return false;
+                }
+          else{
+                        alert("회원가입 완료!");
+                        return true;
+                }
+        }
+    </script>
+    <!--id check-->
+    <script>
+        $(function(){
+            $("#check_id").click(function(){
+               event.preventDefault();
+                var id = $('#id').val();
+                if(id == ""){
+                    $('#idMsg').html("아이디를 입력해주세요.");
+                }else{
+                    $.ajax({
+                        type: "POST",
+                        url: "checkId.php",
+                        data: {'id' : id},
+                        success: function(msg){
+                            if(msg == 'success'){
+                                $('#idMsg').html("사용 가능합니다.");
+                                document.getElementById('id_id').value="1";
+                            }else{
+                                $('#idMsg').html("이미 존재하는 아이디입니다.");
+                                document.getElementById('id_id').value="0";
+                            }
+                        },
+                        error: function(){
+                            $('#idMsg').html('error');
+                            document.getElementById('id_id').value="0";
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    <!--비콘 check-->
+        $(function(){
+            $("#check_beacon").click(function(){
+               event.preventDefault();
+                var beaconId = $('#beaconID').val();
+                if(beaconId == ""){
+                    $('#beaconMsg').html("비콘ID를 입력해주세요.");
+                }else{
+                    $.ajax({
+                        type: "POST",
+                        url: "checkBeacon.php",
+                        data: {'beaconId' : beaconId},
+                        success: function(msg){
+                            if(msg == "success\n"){
+                                $('#beaconMsg').html("사용 가능합니다.");
+                                document.getElementById('beacon_id').value="1";
+                            }else{
+                                $('#beaconMsg').html("이미 존재하는 비콘ID입니다.");
+                                document.getElementById('beacon_id').value="0";
+                            }
+                        },
+                        error: function(){
+                            $('#beaconMsg').html('error');
+                            document.getElementById('beacon_id').value="0";
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/placeholdem.min.js"></script><!--
+    <script src="assets/js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="assets/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>-->
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    
+</body>
+</html>

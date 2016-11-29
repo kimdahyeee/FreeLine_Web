@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<?php session_start(); ?>
+<?php require_once("../configDatabase.php"); ?>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FreeLine관리자 페이지</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <?php
+	   if(!isset($_SESSION['adminID']) || !isset($_SESSION['adminPW'])){
+    ?>
+    <script>
+        alert("로그인 후 이용해주시길 바랍니다.");
+        location.href='../main.html'
+    </script>
+
+    <?php
+        } else{
+            $name = mysqli_prepare($mysqli, "SELECT adminName, beaconID FROM Admin_tb where adminID = '".$_SESSION["adminID"]."'");
+
+            if(!$name){
+                echo "mysql 문제 ";
+                die('mysql name error: '.mysqli_stmt_error($mysqli));
+            }
+            if(!mysqli_stmt_execute($name)){
+                echo "statement 문제 ";
+                die('stmt name error: '.mysqli_stmt_error($name));
+            }
+
+            mysqli_stmt_execute($name);
+            mysqli_stmt_bind_result($name, $myName, $myBeacon);
+            $adminName = "";
+            $beaconID = "";
+            while(mysqli_stmt_fetch($name)){
+                $adminName = $myName;
+                $beaconID = $myBeacon;
+            }
+
+            $profileInfo =mysqli_prepare($mysqli, "SELECT storeName, storeImage, beaconFullCode FROM BeaconInfo_tb WHERE beaconID = '".$beaconID."'");
+            mysqli_stmt_execute($profileInfo);
+            mysqli_stmt_bind_result($profileInfo, $storeN, $storeImg, $beaconFC);
+            $storeName = "";
+            $storeImage = "";
+            $beaconFullCode="";
+            while(mysqli_stmt_fetch($profileInfo)){
+                $storeName = $storeN;
+                $storeImage = $storeImg;
+                $beaconFullCode = $beaconFC;
+            }
+    ?>
+   
+    <div id="wrapper">
+        
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="adminMain.html"><img src="../assets/img/logo_admin.png" height="30px"></a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="./member_form.html"><i class="fa fa-user fa-fw"></i>회원 정보</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="../logout.php"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="adminMain.html"><i class="fa fa-dashboard fa-fw"></i> FreeLine관리자 페이지</a>
+                        </li>
+                        <?php if($beaconFullCode == "1"){ ?>
+                        <li>
+                            <a href="waitPeopleList.html"><i class="fa fa-table fa-fw"></i> 현재 대기 현황</a>
+                        </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="col-lg-12">
+                <div class="row">
+
+                    <div class="admin-main-container">
+                        <div class="container col-lg-10 col-lg-offset-1 col-md-12 col-xs-12">
+                            <div class="profile-picture big-profile-picture clear">
+                                <img width="150px" height="150px" src="http://cslab2.kku.ac.kr/~201341307/images/<?php echo $storeImg; ?>">
+                            </div>
+                        <h1 class="titular notosanskr normal w900"> 안녕하세요.</h1>
+                        <h1 class="titular notosanskr normal w900"> <?php echo $storeName;?> 관리자 페이지 입니다.</h1>
+                        <?php if($beaconFullCode == "0"){ ?>
+                        <h2 class="titular">V 아래 만석 활성화 버튼을 누르면 어플리케이션에서 대기열을 받을 수 있습니다.</h2>
+                        <h2 class="titular">V 식당이 만석일 때에만 눌러주세요!</h2>
+                        <h2 class="titular">V 버튼을 누르시면 '현재 대기현황'탭이 활성화 됩니다!</h2>
+
+                        <div class="input-container">
+                            <a class="subscribe button" id="fullActive">만석 활성화</a>
+                        </div>
+                        <?php }else{ ?>
+                        <h2 class="titular">V 아래 만석 비활성화 버튼을 누르면 어플리케이션에서 대기열을 받지 않게 됩니다.</h2>
+                        <h2 class="titular">V 대기할 필요가 없을 땐 비활성화 해주세요!</h2>
+                        <div class="input-container">
+                            <a class="subscribe button" id="fullUnActive">만석 비활성화</a>
+                        </div>
+                        <?php } ?>    
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../assets/js/adminMainJS.js"></script>
+        
+</body>
+<?php mysqli_stmt_close($profileInfo); mysqli_close($mysqli);} ?>
+</html>

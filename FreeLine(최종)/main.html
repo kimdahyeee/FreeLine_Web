@@ -1,0 +1,398 @@
+<!doctype html>
+<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>FreeLine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+    <!-- Bootstrap 3.3.2 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/css/fontello.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/js/rs-plugin/css/settings.css">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+
+    <script type="text/javascript" src="assets/js/modernizr.custom.32033.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    <div class="pre-loader">
+        <div class="load-con">
+            <img src="assets/img/logo.png" class="animated fadeInDown" alt="">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+   
+    <header>
+        
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="fa fa-bars fa-lg"></span>
+                        </button>
+                        <a class="navbar-brand" href="main.html">
+                            <img src="assets/img/logo.png" alt="" class="logo" width="200px" height="auto">
+                        </a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#about">about</a>
+                            </li>
+                            <li><a href="#features">features</a>
+                            </li>
+                            <li><a href="#screens">application</a>
+                            </li>
+                            <li><a class="getApp" href="#getApp">get app</a>
+                            </li>
+                            <li><a href="#" data-toggle="modal" data-target="#login-modal">관리자 페이지</a></li>
+                        </ul>
+                    </div>
+                </div>
+        </nav>
+
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>로그인</h1><br>
+                    <div id="loginMsg" style="color:red;"></div>
+				        <form id="signup-form" method="post">
+                            <input type="text" name="id" id="id" placeholder="아이디">
+                            <input type="password" name="password" id="pwd" placeholder="패스워드">
+                            <input type="submit" name="login_btn" id="login_btn" class="login loginmodal-submit" value="Login">
+				        </form>
+					
+				  <div class="login-help">
+					<a href="join.html">회원가입</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
+        
+        <div class="tp-banner-container">
+            <div class="tp-banner" >
+                <ul>
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                        <img src="assets/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <div class="tp-caption lfl fadeout"
+                            data-x="left"
+                            data-y="bottom"
+                            data-hoffset="30"
+                            data-voffset="0"
+                            data-speed="500"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="assets/img/splash_screen.png" alt="">
+                        </div>
+
+                        <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
+                            FreeLine
+                        </div>
+                        <div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                            줄에서 자유로워지다!
+                        </div>
+
+                        <div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
+                            <a href="#about" class="btn btn-primary inverse btn-lg">FREELINE이란?</a>
+                        </div>
+                        <div class="tp-caption sfr hidden-xs" data-x="730" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
+                            <a href="#getApp" class="btn btn-default btn-lg">GET APP</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="wrapper">
+        <section id="about">
+            <div class="container">
+                
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>About Us</h1>
+                    <div class="divider"></div>
+                    <p>줄에서 자유로워지다!</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="about-item scrollpoint sp-effect2">
+                            <i class="fa icon-clock fa-2x"></i>
+                            <h3>실시간 조회</h3>
+                            <p>실시간으로 대기 손님들을 관리할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect5">
+                            <i class="fa icon-emo-happy fa-2x"></i>
+                            <h3>신뢰성</h3>
+                            <p>비콘이라는 기기를 사용함으로써 70m이내의 근처에 있는 손님만을 받게 됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect5">
+                            <i class="fa fa-users fa-2x"></i>
+                            <h3>홍보</h3>
+                            <p>애플리케이션에서 통계기능을 제공하여 자신의 식당의 진정한 인기 맛집임을 보여줍니다!</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect1">
+                            <i class="fa icon-mobile fa-2x"></i>
+                            <h3>모바일 웹</h3>
+                            <p>본 페이지는 반응형 웹으로, 모바일로도 대기손님을 확인할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Features</h1>
+                    <div class="divider"></div>
+                    <p>#웹 #어플리케이션</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 scrollpoint sp-effect1">
+                        <div class="media text-right feature">
+                            <a class="pull-right">
+                                <i class="fa icon-emo-cry fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">no show로 고생하셨죠?</h3>
+                                70m이내로 보장해드립니다!
+                            </div>
+                        </div>
+                        <div class="media text-right feature">
+                            <a class="pull-right">
+                                <i class="fa icon-food fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">진정한 맛집이라면!</h3>
+                                저희 FreeLine과 함께해주세요
+                            </div>
+                        </div>
+                        <div class="media text-right feature">
+                            <a class="pull-right" >
+                                <i class="fa icon-heart-filled fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">고객을 생각하는 마음으로</h3>
+                                FreeLine이 함께합니다!
+                            </div>
+                        </div>
+                        <div class="media text-right feature">
+                            <a class="pull-right">
+                                <i class="fa icon-emo-thumbsup fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">간단한 사용법</h3>
+                                누구나 쉽게 사용할 수 있습니다.
+                            </div>
+                        </div>
+                        <div class="media text-right feature">
+                            <a class="pull-right">
+                                <i class="fa icon-emo-surprised fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">간단한 회원가입</h3>
+                                회원가입을 하면 바로 이용 가능합니다!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4" >
+                        <img src="assets/img/web_phone_img.png" class="img-responsive scrollpoint sp-effect5" alt="">
+                    </div>
+                    <div class="col-md-4 col-sm-4 scrollpoint sp-effect2">
+                        <div class="media feature">
+                            <a class="pull-left">
+                                <i class="fa fa-map-marker fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">위치 정보</h3>
+                                위치를 한눈에!
+                            </div>
+                        </div>
+                        <div class="media feature">
+                            <a class="pull-left">
+                                <i class="fa fa-2x icon-chart-bar "></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">통계</h3>
+                                진정한 맛집을 알고싶으세요?
+                            </div>
+                        </div>
+                        <div class="media feature">
+                            <a class="pull-left">
+                                <i class="fa icon-search fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">대기 열 상황 확인</h3>
+                                실시간으로 대기 상황을 확인하세요!
+                            </div>
+                        </div>
+                        <div class="media feature">
+                            <a class="pull-left">
+                                <i class="fa icon-mail-squared fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Push 알림</h3>
+                                식당에 갈 시간을 알려드립니다.
+                            </div>
+                        </div>
+                        <div class="media active feature">
+                            <a class="pull-left" href="#getApp">
+                                <i class="fa fa-plus fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">당장 설치해 주세요!</h3>
+                                어플리케이션 설치화면으로 이동합니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="screens">
+            <div class="container">
+
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>FreeLine Application</h1>
+                    <div class="divider"></div>
+                    <p>어플리케이션 화면</p>
+                </div>
+
+                <div class="filter scrollpoint sp-effect3">
+                    <a href="javascript:void(0)" class="button js-filter-all active">모든 화면</a>
+                    <a href="javascript:void(0)" class="button js-filter-one">NEAR</a>
+                    <a href="javascript:void(0)" class="button js-filter-two">STORE</a>
+                    <a href="javascript:void(0)" class="button js-filter-three">MY WAIT</a>
+                </div>
+                <div class="slider filtering scrollpoint sp-effect5" >
+                    <div class="one">
+                        <img src="assets/img/screens/screen1.jpg" alt="" width="200px" height="355px">
+                        <h4>splash 화면</h4>
+                    </div>
+                    <div class="one">
+                        <img src="assets/img/screens/screen2.jpg" alt="" width="200px" height="355px">
+                        <h4>근처 식당 조회</h4>
+                    </div>
+                    <div class="one">
+                        <img src="assets/img/screens/screen3.jpg" alt="" width="200px" height="355px">
+                        <h4>근처식당 상세보기</h4>
+                    </div>
+                    <div class="one">
+                        <img src="assets/img/screens/screen4.jpg" alt="" width="200px" height="355px">
+                        <h4>대기열 등록화면</h4>
+                    </div>
+                    <div class="one">
+                        <img src="assets/img/screens/screen5" alt="" width="200px" height="355px">
+                        <h4>대기열 등록시 화면</h4>
+                    </div>
+                    <div class="two">
+                        <img src="assets/img/screens/screen7.jpg" alt="" width="200px" height="355px">
+                        <h4>전체 식당 조회</h4>
+                    </div>
+                    <div class="two">
+                        <img src="assets/img/screens/screen8.jpg" alt="" width="200px" height="355px">
+                        <h4>near 상세보기</h4>
+                    </div>
+                    <div class="two">
+                        <img src="assets/img/screens/screen9.jpg" alt="" width="200px" height="355px">
+                        <h4>통계화면</h4>
+                    </div>
+                    <div class="three">
+                        <img src="assets/img/screens/screen10.jpg" alt="" width="200px" height="355px">
+                        <h4>대기열 조회화면</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="getApp">
+            <div class="container-fluid">
+                <div class="section-heading inverse scrollpoint sp-effect3">
+                    <h1>Get App</h1>
+                    <div class="divider"></div>
+                    <p>어플리케이션을 설치해 주세요!</p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--<div class="hanging-phone scrollpoint sp-effect2 hidden-xs">
+                            <img src="assets/img/freeze/freeze-angled2.png" alt="">
+                        </div>-->
+                        <div class="platforms">
+                            <a href="#" class="btn btn-primary inverse scrollpoint sp-effect1">
+                                <i class="fa fa-android fa-3x pull-left"></i>
+                                <span>Download for</span><br>
+                                <b>Android</b>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <a href="#" class="scrollpoint sp-effect3">
+                    <img src="assets/img/logo.png" alt="" class="logo">
+                </a>
+                <div class="social">
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-twitter fa-lg"></i></a>
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-google-plus fa-lg"></i></a>
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-facebook fa-lg"></i></a>
+                </div>
+                <div class="rights">
+                    <p>Copyright &copy; 2016</p>
+                    <p>© FreeLine. Credits:  <a href="#" target="_blank">이광용 김다혜 전하라</a></p>
+                </div>
+            </div>
+        </footer>
+
+        
+
+    </div>
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/placeholdem.min.js"></script>
+    <script src="assets/js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="assets/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script>
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script>
+    <script src="assets/js/login.js"></script>
+</body>
+
+</html>
